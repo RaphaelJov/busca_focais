@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="selecao" onchange="selecionar()">
+        <option value="#">escolha</option>
+        <option value="reparo">reparo</option>
+    </select>
+
+    <select name="" id="selecao2" >
+    </select>
+
+
+    <script>
+
+        const lista = {
+            usa: ['New York', 'California', 'Texas'],
+            india: ['Maharashtra', 'Karnataka', 'Delhi'],
+        };
+
+        function selecionar() {
+
+            //pega as tags no html
+            const selecao = document.getElementById('selecao')
+            const selecao2 = document.getElementById('selecao2')
+
+            //limpa o proximo select
+            selecao2.innerHTML = '<option value="">Selecione</option>';
+
+            //cria variavel e atribui o VALOR do variavel selecao
+            const selecionado = selecao.value
+
+            if (selecionado == 'reparo') {
+                //converte objeto para ser exibido no select
+                Object.entries(lista).forEach(([valor, chave]) => {
+
+                    const opcao = document.createElement('option')
+                    opcao.value = valor;
+                    opcao.textContent = chave;
+                    selecao2.appendChild(opcao);
+                })
+            }
+
+            console.log(selecionado)
+        }
+
+    </script>
+</body>
+
+</html>
